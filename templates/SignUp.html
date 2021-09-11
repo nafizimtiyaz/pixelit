@@ -1,0 +1,107 @@
+{%load static%}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Online Course - Home One</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="apple-touch-icon" href="icon.png">
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- bootstrap v4.0.0 -->
+	<link rel="stylesheet" href={%static "css/bootstrap.min.css"%}>
+	<!-- font-awesome css -->
+	<script src="https://kit.fontawesome.com/4bc9f4da23.js"></script>
+	<!-- themify-icons css -->
+	<link rel="stylesheet" href={%static "css/ionicons.min.css"%}>
+	<!-- animate css -->
+	<link rel="stylesheet" href={%static "css/animate.css"%}>
+	<!-- jquery.mmenu css -->
+	<link rel="stylesheet" href={%static "css/jquery.mmenu.css"%}>
+	<!-- slick css -->
+	<link rel="stylesheet" href={%static "css/slick.css"%}>
+	<!-- slick-theme css -->
+	<link rel="stylesheet" href={%static "css/slick-theme.css"%}>
+	<!-- helper css -->
+	<link rel="stylesheet" href={%static "css/helper.css"%}>
+	<!-- style css -->
+	<link rel="stylesheet" href={%static "css/style.css"%}>
+	<!-- responsive css -->
+	<link rel="stylesheet" href={%static "css/responsive.css"%}>
+</head>
+    <body class="login_registration">
+        <div class="container">
+            <div class="row">
+                <div class="aside col-md-6">
+                    <div class="side_image">
+                        <img src={%static "images/login1.png"%} alt="">
+                    </div>
+                </div>
+                <div class="login_registration_right sign-Up col-md-6">
+                    <h2>Please Sign Up to Create Your Account</h2>
+                    <p>Sign Up by entering the information below</p>
+                    <form method="POST" action="{%url 'regi'%}">
+                                   {%csrf_token%}
+                        <div text="red">
+                            {% for msg in messages %}
+                               <h3> {{msg}}</h3>
+                                  {%endfor%}
+                        </div>
+
+                        <div class="input_group">
+                            <i class="far fa-envelope"></i>
+                            <input type="email" id="email" name="username" placeholder="Your email address" required/>
+                        </div>
+                        <div class="input_group">
+                            <i class="far fa-user"></i>
+                            <input type="text" id="name" name="f_name" placeholder="First Name" required>
+                        </div>
+                        <div class="input_group">
+                            <i class="far fa-user"></i>
+                            <input type="text" id="name" name="l_name" placeholder="Last Name" required >
+                        </div>
+                        <div class="input_group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" placeholder="Password" required/>
+                        </div>
+                        <div class="input_group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password2" name="password2" placeholder="Confirm password" required>
+                        </div>
+                        <div class="btn_group">
+                            <div class="login_forget_btns">
+                                <button type="submit">Sign Up</button>
+                                <!-- <a href="ForgetPassword.html" class="forget_pass">Forgot password ?</a> -->
+                            </div>
+                            <div class="dont_account">
+                                <p>
+                                    Already have an account?
+                                    <span>
+                                        <a href="{%url 'signup'%}">Sign In</a>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>               
+            </div>
+        </div>
+
+        <!-- jquery-3.3.1 version -->
+        <script src={%static "js/vendor/jquery-3.3.1.min.js"%}></script>
+        <!-- bootstra.min js -->
+        <script src={%static "js/bootstrap.min.js"%}></script>
+        <!-- mmenu js -->
+        <script src={%static "js/jquery.mmenu.js"%}></script>
+        <!---slick-js-->
+        <script src={%static "js/slick.min.js"%}></script>
+        <!-- plugins js -->
+        <script src={%static "js/plugins.js"%}></script>
+        <!-- main js -->
+        <script src={%static "js/main.js"%}></script>
+    </body>
+</html>
