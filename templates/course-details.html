@@ -254,9 +254,15 @@
 								<span>2  Months</span>
 							</li>
 						</ul>
+							{% if user.is_authenticated %}
 						<div class="course-features-bottom mt-30">
-							<a href="#" class="btn-common">Take This Course</a>
+							<a href="{%url 'carts' slug=obj.slug %}" class="btn-common">Take This Course</a>
 						</div>
+						{% else %}
+						<div class="course-features-bottom mt-30">
+							<a href="{%url 'regi'%}" class="btn-common">Take This Course</a>
+						</div>
+						{% endif %}
 					</div>
 					<!--course-author-->
 				</div>
@@ -265,4 +271,4 @@
 	</div>
 	<!--course-details end-->
 	
-{% endblock body %}
+{% endblock %}

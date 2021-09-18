@@ -5,7 +5,7 @@ from django.urls import path
 from cart import views
 from django.conf.urls.static import static
 urlpatterns = [
-
+    path('cart/<str:slug>',views.user_cart,name="carts"),
 ]
 
 
