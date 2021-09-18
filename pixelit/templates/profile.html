@@ -1,0 +1,212 @@
+{% extends "pmain.html" %}
+{% block body %}
+{% load static %}
+	<!--header-area end-->
+    <!-- End Header Area -->
+
+    <!-- Profile Main Body Area -->
+{% for msg in messages %}
+                                 <h2> {{msg}}</h2>
+                                  {%endfor%}
+    <section class="profile_main">
+        <div class="container profile_main_innr"></div>
+        <div class="profile_body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile_details">
+                            <div class="profile_image">
+                                <img src="{{request.user.user_profile.image}}" alt="">
+                            </div>
+                            <div class="profile_top">
+                                <div class="person_info">
+                                    <h3 class="name">{{user.first_name}} {{user.last_name}}</h3>
+                                    <h4>Education:{{request.user.user_profile.education}}</h4>
+                                    
+                                    <div class="person_socilal">
+                                        <ul class="d-flex justify-content-center align-items-center">
+                                            <li class="d-flex justify-content-center align-items-center">
+                                                <a href=""><i class="fab fa-instagram"></i></a>
+                                            </li>
+                                            <li class="d-flex justify-content-center align-items-center">
+                                                <a href=""><i class="fab fa-facebook-square"></i></a>
+                                            </li>
+                                            <li class="d-flex justify-content-center align-items-center">
+                                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile_middle">
+                                <h3>Bio</h3>
+                                <h4>{{request.user.user_profile.bio}}</h4>
+                                <div class="profile_middle_innr">
+                                    <h3>Lives</h3>
+                                    <h4>{{request.user.user_profile.location}}</h4>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="profile_bottom">
+                            <div class="edit_btn">
+                                <a href="" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <!--events-and-blog-area start-->
+                        <div class="events-and-blog-area mt-58">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="section-title text-center">
+                                            <h2>My Courses</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-60">
+                                    <div class="col-lg-12">
+                                        <div class="blog-single style-1">
+                                            <div class="blog-thumb">
+                                                <a href="profile-course-details.html"><img src="assets/images/courses/htmlCss.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="blog-desc">
+                                                <h3><a href="profile-course-details.html">All about HTML & CSS</a></h3>
+                                                <ul class="list-none">
+                                                </ul>
+                                                <div class="progress">
+                                                    <div class="progress-bar course-progress" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"><p>100%</p></div>
+                                                </div>
+                                                <a href="profile-course-details.html" class="readmore">Continue Course <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="blog-single style-1">
+                                            <div class="blog-thumb">
+                                                <a href="profile-course-details.html"><img src="assets/images/courses/python.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="blog-desc">
+                                                <h3><a href="profile-course-details.html">Basic Python Programming</a></h3>
+                                                <ul class="list-none">
+                                                </ul>
+                                                <div class="progress">
+                                                    <div class="progress-bar course-progress" role="progressbar" style="width: 47%" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"><p>47%</p></div>
+                                                </div>
+                                                <a href="profile-course-details.html" class="readmore">Continue Course</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Profile Main Body Area -->
+
+<!-- Profile Edit -->
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="POST" action="{%url 'm_profile'%}" enctype="multipart/form-data" class="edit_details">
+                        {% csrf_token %}
+                        <div class="modal_heading d-flex justify-content-between align-items-center">
+                            <h3>Edit Profile</h3>
+                            <a href=""><i class="fas fa-times"></i></a>
+                        </div>
+                        <div class="bg_img">
+                            <a href="" class="d-flex justify-content-center align-items-center edit_pen">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                        </div>
+                        <div class="edit_body">
+                            <div class="container-fluid">
+                                <div class="edit_profile_img">
+<!--                                    <img src="" alt="">-->
+                                    <input type="file" name="image">
+                                    <a href="" class="d-flex justify-content-center align-items-center edit_pen">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                </div>
+                                <div >
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text_box">
+                                                <label>First Name</label>
+                                                <input class="form-control" type="text" id="" name="noteName" placeholder="{{user.first_name}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group text_box">
+                                                <label>Last Name</label>
+                                                <input class="form-control color" type="text" name="phone" id="" placeholder="{{user.last_name}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group text_box">
+                                                <label>Degree Progam</label>
+                                                <input class="form-control color" type="text" name="education" placeholder="Bachelor of Fine Arts in Interior Design" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group text_box">
+                                                <label>Location</label>
+                                                <input class="form-control color" type="text" name="location"  placeholder="Altana, GA" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group text_box">
+                                                <label>Bio</label>
+                                                <input class="form-control color" type="text" name="bio"  placeholder="I am a simple man" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="edit_social">
+                                    <h4>Social</h4>
+                                    <div class="social_icons d-flex justify-content-between align-items-end">
+                                        <div class="person_socilal">
+                                            <ul class="d-flex justify-content-start align-items-center">
+                                                <li class="d-flex justify-content-center align-items-center">
+                                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                                </li>
+                                                <li class="d-flex justify-content-center align-items-center">
+                                                    <a href=""><i class="fab fa-facebook-square"></i></a>
+                                                </li>
+                                                <li class="d-flex justify-content-center align-items-center">
+                                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a>Add Social</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="save_btn">
+                            <div class="container-fluid">
+<!--                                <a href="">Save</a>-->
+                                <button type="submit">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- End Profile Edit -->
+
+
+
+
+<!-- End Profile Edit -->
+
+    <!-- jquery-3.3.1 version -->
+{% endblock body %}
